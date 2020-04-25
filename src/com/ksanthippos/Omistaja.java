@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class Omistaja {
 
@@ -17,10 +18,10 @@ public class Omistaja {
         this.lisaaNappi = new Button("Lisää tuote");
     }
 
-    public Parent nakyma() {
+    public Parent nakyma(Stage stage) {
 
 
-
+        stage.setTitle("Tervetuloa, omistaja!");
 
         asettelu.setPadding(new Insets(10,10,10,10));
         asettelu.setHgap(10);

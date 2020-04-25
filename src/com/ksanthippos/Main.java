@@ -19,7 +19,7 @@ public class Main extends Application {
 
         MenuBar menuBar = new MenuBar();
         Menu menu= new Menu("Asetukset");
-        MenuItem kirjaudu = new MenuItem("Kirjaudu");
+        MenuItem kirjaudu = new MenuItem("Kirjaudu sisään");
         MenuItem lopeta = new MenuItem("Lopeta");
         menu.getItems().addAll(kirjaudu, lopeta);
         menuBar.getMenus().addAll(menu);
@@ -40,6 +40,7 @@ public class Main extends Application {
             System.exit(0);
         });
 
+        // tämä luodaan, kun ohjelma käynnistyy --> siksi tuplana kirjadu - actionissa
         BorderPane paaNakyma = new BorderPane();
         paaNakyma.setPrefSize(400, 300);
         Kirjautuminen kirjautuminen = new Kirjautuminen();

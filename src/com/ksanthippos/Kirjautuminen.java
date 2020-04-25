@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -15,28 +16,27 @@ import javafx.stage.Stage;
 
 public class Kirjautuminen {
 
+    private BorderPane paaNakyma;
     private GridPane asettelu;
     private Omistaja omistaja;
     private Asiakas asiakas;
 
-
     public Kirjautuminen() {
 
+        this.paaNakyma = new BorderPane();
         this.asettelu = new GridPane();
         this.omistaja = new Omistaja();
         this.asiakas = new Asiakas();
 
     }
 
-
     public Parent kirjautumisNakyma(Stage stage) {
-
-
 
         stage.setTitle("Kirjaudu sisään");
         asettelu.setHgap(8);
         asettelu.setVgap(10);
         asettelu.setPadding(new Insets(10,10,10,10));
+        asettelu.setPrefSize(400, 300);
 
         Label nimiLabel = new Label("Käyttäjänimi:");
         GridPane.setConstraints(nimiLabel, 1,1);
@@ -58,16 +58,15 @@ public class Kirjautuminen {
         GridPane.setConstraints(virheLabel, 2,0);
         GridPane.setConstraints(kirjauduNappi, 4,1);
 
+
         kirjauduNappi.setOnAction(e -> {
             if (nimiInput.getText().equals("") && salaInput.getText().equals("")){
-                Scene omistajaNakyma = new Scene(omistaja.nakyma());
-                stage.setScene(omistajaNakyma);
-                stage.show();
+                Scene omistajaNakyma = new Scene(omistaja.nakyma(stage));
+                paaNakyma.setCenter(omistajaNakyma.getRoot());
             }
             else if (nimiInput.getText().equals("a") && salaInput.getText().equals("a")) {
-                Scene asiakasNakyma = new Scene(asiakas.nakyma());
-                stage.setScene(asiakasNakyma);
-                stage.show();
+                Scene asiakasNakyma = new Scene(asiakas.nakyma(stage));
+                paaNakyma.setCenter(asiakasNakyma.getRoot());
             }
             else {
                 virheLabel.setText("Väärä tunnus tai salasana");
@@ -76,8 +75,10 @@ public class Kirjautuminen {
 
         asettelu.setAlignment(Pos.CENTER);
         asettelu.getChildren().addAll(nimiLabel, nimiInput, salaLabel, salaInput, kirjauduNappi, virheLabel);
+        paaNakyma.setCenter(asettelu);
 
-        return asettelu;
+        return paaNakyma;
+
     }
 
 
