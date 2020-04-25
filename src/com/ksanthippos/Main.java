@@ -24,10 +24,12 @@ public class Main extends Application {
         menu.getItems().addAll(kirjaudu, lopeta);
         menuBar.getMenus().addAll(menu);
 
+        Kahvila kahvila = new Kahvila();
+
         kirjaudu.setOnAction(e -> {
 
             BorderPane paaNakyma = new BorderPane();
-            Kirjautuminen kirjautuminen = new Kirjautuminen();
+            Kirjautuminen kirjautuminen = new Kirjautuminen(kahvila);
             paaNakyma.setTop(menuBar);
             paaNakyma.setCenter(kirjautuminen.kirjautumisNakyma(stage));
             Scene scene = new Scene(paaNakyma);
@@ -43,7 +45,7 @@ public class Main extends Application {
         // tämä luodaan, kun ohjelma käynnistyy --> siksi tuplana kirjadu - actionissa
         BorderPane paaNakyma = new BorderPane();
         paaNakyma.setPrefSize(400, 300);
-        Kirjautuminen kirjautuminen = new Kirjautuminen();
+        Kirjautuminen kirjautuminen = new Kirjautuminen(kahvila);
         paaNakyma.setTop(menuBar);
         paaNakyma.setCenter(kirjautuminen.kirjautumisNakyma(stage));
         Scene scene = new Scene(paaNakyma);

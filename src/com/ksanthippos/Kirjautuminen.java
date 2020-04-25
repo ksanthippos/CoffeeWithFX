@@ -21,12 +21,12 @@ public class Kirjautuminen {
     private Omistaja omistaja;
     private Asiakas asiakas;
 
-    public Kirjautuminen() {
+    public Kirjautuminen(Kahvila kahvila) {
 
         this.paaNakyma = new BorderPane();
         this.asettelu = new GridPane();
-        this.omistaja = new Omistaja();
-        this.asiakas = new Asiakas();
+        this.omistaja = new Omistaja(kahvila);
+        this.asiakas = new Asiakas(kahvila);
 
     }
 
@@ -60,11 +60,11 @@ public class Kirjautuminen {
 
 
         kirjauduNappi.setOnAction(e -> {
-            if (nimiInput.getText().equals("") && salaInput.getText().equals("")){
+            if (nimiInput.getText().equals("o") && salaInput.getText().equals("")){
                 Scene omistajaNakyma = new Scene(omistaja.nakyma(stage));
                 paaNakyma.setCenter(omistajaNakyma.getRoot());
             }
-            else if (nimiInput.getText().equals("a") && salaInput.getText().equals("a")) {
+            else if (nimiInput.getText().equals("a") && salaInput.getText().equals("")) {
                 Scene asiakasNakyma = new Scene(asiakas.nakyma(stage));
                 paaNakyma.setCenter(asiakasNakyma.getRoot());
             }
