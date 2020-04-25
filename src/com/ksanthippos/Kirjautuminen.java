@@ -60,11 +60,11 @@ public class Kirjautuminen {
 
 
         kirjauduNappi.setOnAction(e -> {
-            if (nimiInput.getText().equals("o") && salaInput.getText().equals("")){
+            if (nimiInput.getText().equals("omistaja") && salaInput.getText().equals("omistaja")){
                 Scene omistajaNakyma = new Scene(omistaja.nakyma(stage));
                 paaNakyma.setCenter(omistajaNakyma.getRoot());
             }
-            else if (nimiInput.getText().equals("") && salaInput.getText().equals("")) {
+            else if (nimiInput.getText().equals("asiakas") && salaInput.getText().equals("asiakas")) {
                 Scene asiakasNakyma = new Scene(asiakas.nakyma(stage));
                 paaNakyma.setCenter(asiakasNakyma.getRoot());
             }
