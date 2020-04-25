@@ -19,7 +19,7 @@ public class Main extends Application {
 
         MenuBar menuBar = new MenuBar();
         Menu menu= new Menu("Asetukset");
-        MenuItem kirjaudu = new MenuItem("Kirjaudu sisään");
+        MenuItem kirjaudu = new MenuItem("Vaihda profiilia..");
         MenuItem lopeta = new MenuItem("Lopeta");
         menu.getItems().addAll(kirjaudu, lopeta);
         menuBar.getMenus().addAll(menu);

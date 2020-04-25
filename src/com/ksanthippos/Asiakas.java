@@ -3,6 +3,7 @@ package com.ksanthippos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -44,10 +45,7 @@ public class Asiakas {
         nakyma.setCenter(asettelu);
         nakyma.setTop(saldoLabel);
 
-
         paivita(kahvila, asettelu, ostaNappi);
-
-
 
         ostaNappi.setOnAction(e -> {
             paivita(kahvila, asettelu, ostaNappi);
@@ -70,15 +68,24 @@ public class Asiakas {
 
             Button ostaNappi = new Button("Osta");
             ostaNappi.setOnAction(e -> {
-                saldo = saldo - a.getHinta();
-                saldoLabel.setText("Saldo : " + saldo + " €");
+
+                if (a.getHinta() > saldo) {
+                    Alert info = new Alert(Alert.AlertType.WARNING);
+                    info.setHeaderText("Saldosi ei riitä");
+                    info.setContentText("Sinulla on " + saldo + " euroa, " +
+                                            "mutta tuote maksaa " + a.getHinta() + " euroa.");
+                    info.showAndWait();
+                }
+                else {
+                    saldo = saldo - a.getHinta();
+                    saldoLabel.setText("Saldo : " + saldo + " €");
+                }
             });
 
             GridPane.setConstraints(ostaNappi, 1, k);
             asettelu.getChildren().addAll(nimiLabel, ostaNappi);
 
             k++;
-
         }
 
         GridPane.setConstraints(nappi, 0, k);

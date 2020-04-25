@@ -3,7 +3,6 @@ package com.ksanthippos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -18,7 +17,7 @@ public class Omistaja {
     public Omistaja(Kahvila kahvila) {
         this.kahvila = kahvila;
         this.asettelu = new GridPane();
-        this.lisaaNappi = new Button("Lisää tuote");
+        this.lisaaNappi = new Button("Lisää uusi tuote");
     }
 
     public Parent nakyma(Stage stage) {
@@ -44,7 +43,7 @@ public class Omistaja {
         return asettelu;
     }
 
-    public static void paivita(Kahvila kahvila, GridPane pane, Button nappi) {
+    public void paivita(Kahvila kahvila, GridPane pane, Button nappi) {
 
         int k = 0;
         pane.getChildren().clear();

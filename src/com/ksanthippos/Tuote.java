@@ -10,7 +10,6 @@ public class Tuote {
         this.hinta = input;
     }
 
-    // getterit
     public String getNimi() {
         return this.nimi;
     }

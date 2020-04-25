@@ -20,7 +20,7 @@ public class LisaaTuote {
     public void lisaa() {
 
         Stage stage = new Stage();
-        stage.setTitle("Lisää tuote");
+        stage.setTitle("Lisää uusi tuote");
         GridPane asettelu = new GridPane();
         asettelu.setPadding(new Insets(10, 10, 10, 10));
         asettelu.setVgap(8);
@@ -30,7 +30,7 @@ public class LisaaTuote {
         GridPane.setConstraints(nimiLabel, 0, 0);
         TextField nimiInput = new TextField();
         GridPane.setConstraints(nimiInput, 1, 0);
-        Label hintaLabel = new Label("Anna hinta: ");
+        Label hintaLabel = new Label("Anna tuotteen hinta: ");
         GridPane.setConstraints(hintaLabel, 0, 1);
         TextField hintaInput = new TextField();
         GridPane.setConstraints(hintaInput, 1, 1);

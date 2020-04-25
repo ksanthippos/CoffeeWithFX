@@ -9,18 +9,14 @@ public class Kahvila {
 
     public Kahvila() {
         this.tuotteet = new ArrayList<>();
-
-        // valmiit tuotteet
-        tuotteet.add(new Tuote("omppu", 1));
-        tuotteet.add(new Tuote("piirakka", 5));
-        tuotteet.add(new Tuote("leivos", 5));
+        tuotteet.add(new Tuote("sacherkakku", 3));
+        tuotteet.add(new Tuote("kahvi", 2));
+        tuotteet.add(new Tuote("pizzapala", 4));
     }
 
     public List<Tuote> getTuote() {
         return tuotteet;
     }
-
-    public int getKoko() { return tuotteet.size(); }
 
     public void lisaaTuote(Tuote tuote) {
         tuotteet.add(tuote);
@@ -31,29 +27,6 @@ public class Kahvila {
             tuotteet.remove(tuote);
         }
     }
-
-
-    // tuotteen poistaminen Stringillä
-/*    public void poistaTuote(String poistettava) {
-
-        int indeksi = -1;
-        for (Tuote tuote: tuotteet) {
-            if (tuote.getNimi().equals(poistettava)) {
-                indeksi = tuotteet.indexOf(tuote);
-            }
-        }
-
-        if (indeksi == -1) {
-            System.out.println("Tuotetta ei ole");
-        } else {
-            System.out.println("Tuote poistettiin!");
-            tuotteet.remove(indeksi);
-        }
-
-    }*/
-
-
-
 
 }
 
