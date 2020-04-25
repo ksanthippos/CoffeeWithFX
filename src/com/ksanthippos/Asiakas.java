@@ -5,19 +5,29 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class Asiakas {
 
+    private BorderPane nakyma;
     private GridPane asettelu;
     private Button ostaNappi;
     private Kahvila kahvila;
+    private Label saldoLabel;
+    private Label nimiLabel;
+    private int saldo;
+
 
     public Asiakas(Kahvila kahvila) {
+        this.nakyma = new BorderPane();
         this.asettelu = new GridPane();
-        this.ostaNappi = new Button("Osta");
         this.kahvila = kahvila;
+        this.saldo = 10;
+        this.saldoLabel = new Label();
+        this.ostaNappi = new Button("Osta");
+        saldoLabel.setText("Saldo: 10 €");
     }
 
     public Parent nakyma(Stage stage) {
@@ -27,41 +37,47 @@ public class Asiakas {
         asettelu.setPadding(new Insets(10,10,10,10));
         asettelu.setHgap(10);
         asettelu.setVgap(8);
-        asettelu.setPrefSize(400, 300);
-
-        asettelu.getChildren().add(ostaNappi);
+        asettelu.setPrefSize(500, 300);
         asettelu.setAlignment(Pos.CENTER);
+
+        nakyma.setPadding(new Insets(20, 0, 0, 20));
+        nakyma.setCenter(asettelu);
+        nakyma.setTop(saldoLabel);
+
 
         paivita(kahvila, asettelu, ostaNappi);
 
+
+
         ostaNappi.setOnAction(e -> {
             paivita(kahvila, asettelu, ostaNappi);
-            asettelu.getChildren().add(ostaNappi);
         });
-        return asettelu;
+
+        return nakyma;
 
     }
 
-    public static void paivita(Kahvila kahvila, GridPane pane, Button nappi) {
+    public void paivita(Kahvila kahvila, GridPane asettelu, Button nappi) {
 
         int k = 0;
-        pane.getChildren().clear();
+        asettelu.getChildren().clear();
 
         for (Tuote a : kahvila.getTuote()) {
 
-            Label nimi = new Label();
-            nimi.setText(a.getNimi() + ", " + a.getHinta() + "€");
-            GridPane.setConstraints(nimi, 0,k);
+            nimiLabel = new Label();
+            nimiLabel.setText(a.getNimi() + ", " + a.getHinta() + "€");
+            GridPane.setConstraints(nimiLabel, 0, k);
 
             Button ostaNappi = new Button("Osta");
-            ostaNappi.setOnAction(ee -> {
-                System.out.println("Ostit tuotteen!");
-                System.out.println("Tuotteen nimi: " + a.getNimi());
+            ostaNappi.setOnAction(e -> {
+                saldo = saldo - a.getHinta();
+                saldoLabel.setText("Saldo : " + saldo + " €");
             });
-            GridPane.setConstraints(ostaNappi, 1, k);
-            pane.getChildren().addAll(nimi, ostaNappi);
 
-            k = k + 1;
+            GridPane.setConstraints(ostaNappi, 1, k);
+            asettelu.getChildren().addAll(nimiLabel, ostaNappi);
+
+            k++;
 
         }
 

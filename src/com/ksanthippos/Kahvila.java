@@ -13,7 +13,7 @@ public class Kahvila {
         // valmiit tuotteet
         tuotteet.add(new Tuote("omppu", 1));
         tuotteet.add(new Tuote("piirakka", 5));
-        tuotteet.add(new Tuote("mustikkapiirakka", 5));
+        tuotteet.add(new Tuote("leivos", 5));
     }
 
     public List<Tuote> getTuote() {

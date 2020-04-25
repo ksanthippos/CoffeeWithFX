@@ -64,7 +64,7 @@ public class Kirjautuminen {
                 Scene omistajaNakyma = new Scene(omistaja.nakyma(stage));
                 paaNakyma.setCenter(omistajaNakyma.getRoot());
             }
-            else if (nimiInput.getText().equals("a") && salaInput.getText().equals("")) {
+            else if (nimiInput.getText().equals("") && salaInput.getText().equals("")) {
                 Scene asiakasNakyma = new Scene(asiakas.nakyma(stage));
                 paaNakyma.setCenter(asiakasNakyma.getRoot());
             }
