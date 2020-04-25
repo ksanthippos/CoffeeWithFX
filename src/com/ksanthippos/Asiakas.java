@@ -78,7 +78,7 @@ public class Asiakas {
                 }
                 else {
                     saldo = saldo - a.getHinta();
-                    saldoLabel.setText("Saldo : " + saldo + " €");
+                    saldoLabel.setText("Saldo: " + saldo + " €");
                 }
             });
 
